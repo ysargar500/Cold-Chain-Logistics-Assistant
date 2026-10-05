@@ -1,4 +1,6 @@
-# Ingesting data
+# Phase 0
+
+## Ingesting data
 
 - Download the dataset from 'Data\Source\data.txt'
 - Create and EC2 instance > docker container > mcr.microsoft.com/mssql/server.2022-latest
@@ -29,7 +31,7 @@ docker run -v mssql_data:/var/opt/mssql \
 
 - python scripts\ingest_legacy_data.py
 
-# Connecting to the data
+## Connecting to the data
 
 We need to query the database
 - Download : https://github.com/microsoft/azuredatastudio
@@ -58,7 +60,7 @@ We need to query the database
 - SELECT COUNT(*) AS total_rows FROM dbo.TBL_SC_FLEET_HIST_RAW;
 
 
-# instruction for Ec2 instance > datbase
+## instruction for Ec2 instance > datbase
 
 - Instance type : c7i-flex.large
 - storage : 30 gb
@@ -78,4 +80,10 @@ docker run -v mssql_data:/var/opt/mssql \
 ```
 - copy the ip address of the ec2 (public)
 
+# Phase 1
 
+## SOP Ingestion
+
+- https://app.pinecone.io/ > get api key
+- Use it in .env
+- run python scripts\ingest_sop_pinecone.py
